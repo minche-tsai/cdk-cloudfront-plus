@@ -47,7 +47,8 @@ new Distribution(stack, 'dist', {
 
 | Extension Name | Category   | Solution ID   | Function/Folder Name   | Status |
 | -------------- | ---------- | ------------- | --------------------------------------- | ---|
-| [Access Origin by geolocation](https://github.com/pahud/cdk-cloudfront-plus/issues/11) | Origin Selection    | SO8118 | cf-access-origin-by-geolocation        | WIP |
+| [Access Origin by geolocation](https://github.com/pahud/cdk-cloudfront-plus/issues/41) | Origin Selection    | SO8118 | cf-access-origin-by-geolocation        | Completed |
+| [Redirect by geolocation](https://github.com/pahud/cdk-cloudfront-plus/issues/11) | Origin Selection    | SO8135 | cf-redirect-by-geolocation        | WIP |
 | [Convert Query String](https://github.com/pahud/cdk-cloudfront-plus/issues/23) |  Override Request   | SO8113 | cf-convert-query-string        | WIP |
 | [OAuth2 Authentication](https://github.com/pahud/cdk-cloudfront-plus/issues/17) |  Authentication   | SO8131 | cf-authentication-by-oauth2        | WIP |
 | [Cognito Redirect](https://github.com/pahud/cdk-cloudfront-plus/issues/16) |  Authentication   | SO8132 | cf-authentication-by-cognito-redirect        | WIP |
