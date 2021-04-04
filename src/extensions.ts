@@ -337,9 +337,9 @@ export class RedirectByGeolocation extends Custom {
       },
     });
     super(scope, id, {
-      func: func,
+      func,
       eventType: cf.LambdaEdgeEventType.ORIGIN_REQUEST,
-      solutionId: 'SO8134',
+      solutionId: 'SO8135',
       templateDescription: 'Cloudfront extension with AWS CDK - Redirect by Geolocation',
     });
   }
