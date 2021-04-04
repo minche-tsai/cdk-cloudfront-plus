@@ -1,0 +1,256 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`minimal usage 1`] = `
+Object {
+  "Outputs": Object {
+    "distributionDomainName": Object {
+      "Value": Object {
+        "Fn::GetAtt": Array [
+          "dist3D2177D6",
+          "DomainName",
+        ],
+      },
+    },
+  },
+  "Parameters": Object {
+    "AssetParameters18a356f6291f85e354fe12899b2d11001a09c267b3d1355be2244d4e6fbd284fArtifactHashC03AE343": Object {
+      "Description": "Artifact hash for asset \\"18a356f6291f85e354fe12899b2d11001a09c267b3d1355be2244d4e6fbd284f\\"",
+      "Type": "String",
+    },
+    "AssetParameters18a356f6291f85e354fe12899b2d11001a09c267b3d1355be2244d4e6fbd284fS3BucketBD66D4BC": Object {
+      "Description": "S3 bucket for asset \\"18a356f6291f85e354fe12899b2d11001a09c267b3d1355be2244d4e6fbd284f\\"",
+      "Type": "String",
+    },
+    "AssetParameters18a356f6291f85e354fe12899b2d11001a09c267b3d1355be2244d4e6fbd284fS3VersionKeyD25000B8": Object {
+      "Description": "S3 key for asset version \\"18a356f6291f85e354fe12899b2d11001a09c267b3d1355be2244d4e6fbd284f\\"",
+      "Type": "String",
+    },
+    "AssetParameters1ed38f40e2e8b97637df0b181112986b486c2b8b315a9c09441599b0ae447eecArtifactHash487F0A01": Object {
+      "Description": "Artifact hash for asset \\"1ed38f40e2e8b97637df0b181112986b486c2b8b315a9c09441599b0ae447eec\\"",
+      "Type": "String",
+    },
+    "AssetParameters1ed38f40e2e8b97637df0b181112986b486c2b8b315a9c09441599b0ae447eecS3Bucket25AE18AD": Object {
+      "Description": "S3 bucket for asset \\"1ed38f40e2e8b97637df0b181112986b486c2b8b315a9c09441599b0ae447eec\\"",
+      "Type": "String",
+    },
+    "AssetParameters1ed38f40e2e8b97637df0b181112986b486c2b8b315a9c09441599b0ae447eecS3VersionKey7381E876": Object {
+      "Description": "S3 key for asset version \\"1ed38f40e2e8b97637df0b181112986b486c2b8b315a9c09441599b0ae447eec\\"",
+      "Type": "String",
+    },
+  },
+  "Resources": Object {
+    "AccessOriginByGeolocationFunc7811FFF3": Object {
+      "DependsOn": Array [
+        "AccessOriginByGeolocationFuncServiceRole01049273",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": Object {
+            "Ref": "AssetParameters1ed38f40e2e8b97637df0b181112986b486c2b8b315a9c09441599b0ae447eecS3Bucket25AE18AD",
+          },
+          "S3Key": Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                Object {
+                  "Fn::Select": Array [
+                    0,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParameters1ed38f40e2e8b97637df0b181112986b486c2b8b315a9c09441599b0ae447eecS3VersionKey7381E876",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "Fn::Select": Array [
+                    1,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParameters1ed38f40e2e8b97637df0b181112986b486c2b8b315a9c09441599b0ae447eecS3VersionKey7381E876",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            ],
+          },
+        },
+        "Handler": "index.handler",
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "AccessOriginByGeolocationFuncServiceRole01049273",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs12.x",
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "AccessOriginByGeolocationFuncCurrentVersion7A43964926ff9673ff9d57ebbcfdc0d371e33129": Object {
+      "Properties": Object {
+        "FunctionName": Object {
+          "Ref": "AccessOriginByGeolocationFunc7811FFF3",
+        },
+      },
+      "Type": "AWS::Lambda::Version",
+    },
+    "AccessOriginByGeolocationFuncServiceRole01049273": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "edgelambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "AccessOriginByGeolocationNestedStackAccessOriginByGeolocationNestedStackResource4182BA08": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "TemplateURL": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "https://s3.",
+              Object {
+                "Ref": "AWS::Region",
+              },
+              ".",
+              Object {
+                "Ref": "AWS::URLSuffix",
+              },
+              "/",
+              Object {
+                "Ref": "AssetParameters18a356f6291f85e354fe12899b2d11001a09c267b3d1355be2244d4e6fbd284fS3BucketBD66D4BC",
+              },
+              "/",
+              Object {
+                "Fn::Select": Array [
+                  0,
+                  Object {
+                    "Fn::Split": Array [
+                      "||",
+                      Object {
+                        "Ref": "AssetParameters18a356f6291f85e354fe12899b2d11001a09c267b3d1355be2244d4e6fbd284fS3VersionKeyD25000B8",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "Fn::Select": Array [
+                  1,
+                  Object {
+                    "Fn::Split": Array [
+                      "||",
+                      Object {
+                        "Ref": "AssetParameters18a356f6291f85e354fe12899b2d11001a09c267b3d1355be2244d4e6fbd284fS3VersionKeyD25000B8",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::CloudFormation::Stack",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "OrigReqPolicyBF71F31A": Object {
+      "Properties": Object {
+        "OriginRequestPolicyConfig": Object {
+          "CookiesConfig": Object {
+            "CookieBehavior": "none",
+          },
+          "HeadersConfig": Object {
+            "HeaderBehavior": "whitelist",
+            "Headers": Array [
+              "cloudfront-viewer-country",
+            ],
+          },
+          "Name": "demostackOrigReqPolicyE18619B9",
+          "QueryStringsConfig": Object {
+            "QueryStringBehavior": "none",
+          },
+        },
+      },
+      "Type": "AWS::CloudFront::OriginRequestPolicy",
+    },
+    "dist3D2177D6": Object {
+      "Properties": Object {
+        "DistributionConfig": Object {
+          "DefaultCacheBehavior": Object {
+            "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+            "Compress": true,
+            "LambdaFunctionAssociations": Array [
+              Object {
+                "EventType": "origin-request",
+                "LambdaFunctionARN": Object {
+                  "Ref": "AccessOriginByGeolocationFuncCurrentVersion7A43964926ff9673ff9d57ebbcfdc0d371e33129",
+                },
+              },
+            ],
+            "OriginRequestPolicyId": Object {
+              "Ref": "OrigReqPolicyBF71F31A",
+            },
+            "TargetOriginId": "demostackdistOrigin17D988893",
+            "ViewerProtocolPolicy": "allow-all",
+          },
+          "Enabled": true,
+          "HttpVersion": "http2",
+          "IPV6Enabled": true,
+          "Origins": Array [
+            Object {
+              "CustomOriginConfig": Object {
+                "OriginProtocolPolicy": "https-only",
+                "OriginSSLProtocols": Array [
+                  "TLSv1.2",
+                ],
+              },
+              "DomainName": "aws.amazon.com",
+              "Id": "demostackdistOrigin17D988893",
+            },
+          ],
+        },
+      },
+      "Type": "AWS::CloudFront::Distribution",
+    },
+  },
+}
+`;
