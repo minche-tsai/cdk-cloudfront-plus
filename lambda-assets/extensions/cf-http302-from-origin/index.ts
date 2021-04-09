@@ -1,10 +1,9 @@
-import { String } from 'aws-sdk/clients/cloudsearch';
 import axios, { AxiosResponse } from 'axios';
 
 export interface HttpResponse {
   readonly status: number;
   readonly statusDescription: string;
-  readonly headers: { [key: string]: {[key: string]: String}[] },
+  readonly headers: { [key: string]: {[key: string]: string}[] },
   readonly body: string,
 }
 
@@ -21,30 +20,29 @@ export async function handler(event: any) {
     const locationUrl = response.headers['location'][0].value;
     const newResponse = await HttpGet(locationUrl)
     const responseObject: HttpResponse = {
-      headers: {
-        'cache-control': [{
-          key: 'Cache-Control',
-          value: `max-age=0`,
-        }],
-      },
+      headers: {},
       status: newResponse.status,
       statusDescription: newResponse.statusText,
       body: newResponse.data,
     }
-    return responseObject
+    return cacheControl(responseObject, '10')
   } else {
     return response;
   }
 };
 
-
-function cacheControl(responseObject: HttpResponse,  maxAge: string) {
-  return Object.assign(responseObject, {
-    headers: {
-      'cache-control': [{
-        key: 'Cache-Control',
-        value: `max-age=${maxAge}`,
-      }],
+/**
+ * set the cache control header
+ * @param responseObject 
+ * @param maxAge 
+ * @returns 
+ */
+function cacheControl(responseObject: HttpResponse,  maxAge: string): HttpResponse {
+  responseObject['headers']['cache-control'] = [
+    {
+      key: 'Cache-Control',
+      value: `max-age=${maxAge}`,
     }
-  })
+  ]
+  return responseObject
 }
