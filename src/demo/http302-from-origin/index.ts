@@ -47,7 +47,7 @@ const backend = new Http302Backend(stack, 'Http302Backend');
 const dist = new cf.Distribution(stack, 'dist', {
   defaultBehavior: {
     origin: new origins.HttpOrigin(backend.domainName),
-    cachePolicy: cf.CachePolicy.CACHING_DISABLED,
+    cachePolicy: cf.CachePolicy.CACHING_OPTIMIZED,
     edgeLambdas: [ext],
   },
 });
