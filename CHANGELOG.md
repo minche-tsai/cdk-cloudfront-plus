@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.8](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.3.7...v0.3.8) (2021-04-16)
+
+
+### Bug Fixes
+
+* bundling error ([#88](https://github.com/pahudnet/cdk-cloudfront-plus/issues/88)) ([8336027](https://github.com/pahudnet/cdk-cloudfront-plus/commit/83360270cf8a2929770a26da4a7e0a26c69ebaad))
+
 ### [0.3.7](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.3.6...v0.3.7) (2021-04-13)
 
 ### [0.3.6](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.3.5...v0.3.6) (2021-04-12)
